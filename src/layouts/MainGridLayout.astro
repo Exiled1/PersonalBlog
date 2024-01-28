@@ -11,9 +11,10 @@ import {siteConfig} from "@/config";
 interface Props {
     title: string;
     banner?: string;
+    toc?: any;
 }
 
-const { title, banner } = Astro.props;
+const { title, banner, toc } = Astro.props;
 
 const isHomePage = pathsEqual(Astro.url.pathname, '/') || pathsEqual(Astro.url.pathname, '/page/1');
 
@@ -32,7 +33,7 @@ const enableBanner = siteConfig.banner.enable;
     >
         <Navbar transition:animate="fade" transition:persist></Navbar>
     </div>
-    <SideBar class="row-start-3 row-end-4 col-span-2 lg:row-start-2 lg:row-end-3 lg:col-span-1 lg:max-w-[280px] " transition:persist></SideBar>
+    <SideBar class="row-start-3 row-end-4 col-span-2 lg:row-start-2 lg:row-end-3 lg:col-span-1 lg:max-w-[280px]" toc={toc} transition:persist></SideBar>
 
     <div class="row-start-2 row-end-3 col-span-2 lg:col-span-1 overflow-hidden" transition:animate="slide">
         <!-- the overflow-hidden here prevent long text break the layout-->
